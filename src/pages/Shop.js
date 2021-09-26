@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-
+import {Link} from 'react-router-dom';
 function Shop() {
 
     useEffect( () => {
@@ -10,17 +10,18 @@ function Shop() {
 
     const fetchItems = async () =>{
         const localdata = await fetch('https://fortnite-api.theapinetwork.com/upcoming/get');
-        console.log(0, localdata);
         const localItems = await localdata.json();
-        console.log(1, localItems);
-        console.log(2, localItems.data);
         setItems(localItems.data);
     }
 
     return (
         <div>
             <h1>Shop</h1>
-            {items.map(item => <div>{item.itemId}</div>)}
+            {items.map(item => 
+                <h1 key={item.itemId}>
+                    <Link to={`/shop/${item.itemId}`}>{item.item.name}</Link>
+                </h1>
+            )}
         </div>
     );
 }
