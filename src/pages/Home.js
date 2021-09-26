@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { logIn, logOut, increment, decrement } from '../store/actions';
+import React from 'react';
 
 function Home() {
     const { isAuth, count } = useSelector(state => state);
