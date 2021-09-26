@@ -1,5 +1,5 @@
 const isAuthReducer = (state = false, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'SIGN_IN':
             return true;
         case "SIGN_OUT":
