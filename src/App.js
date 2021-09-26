@@ -1,19 +1,21 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { logIn, logOut, increment, decrement } from './store/actions';
+import Nav from './components/Nav';
+import About from './pages/About';
+import Shop from './pages/Shop';
+import Home from './pages/Home';
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
-  const { isAuth, count } = useSelector(state => state);
-  const dispatch = useDispatch();
-
   return (
     <div className="App">
-      <button onClick={() => dispatch(logIn())}>logIn</button>
-      <button onClick={() => dispatch(logOut())}>logOut</button>
-      {isAuth ? <h1> isAuth From Redux </h1> : <h1> is Not Auth From Redux  </h1>}
-
-      <button onClick={() => dispatch(increment(5))}>+</button>
-      <button onClick={() => dispatch(decrement(5))}>-</button>
-      {count}
+      <Router>
+        <Nav />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/shop" component={Shop} />
+        </Switch>
+      </Router>
     </div>
   );
 }
